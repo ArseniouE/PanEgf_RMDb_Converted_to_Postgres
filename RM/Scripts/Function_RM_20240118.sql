@@ -22,7 +22,9 @@ DECLARE
  v_sql varchar;
  pl_schema varchar:='olapts'; 
 begin
-	
+
+	pl_jobid:='populate_report'||TO_CHAR(now(), 'yyyymmddHH24MI')::varchar;
+
 	GET DIAGNOSTICS stack = PG_CONTEXT;
 	pl_function:= substring(stack from 'function (.*?) line');
 	pl_function:= substring(pl_function,1,length(pl_function)-2);
